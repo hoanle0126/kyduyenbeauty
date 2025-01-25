@@ -12,7 +12,7 @@ services:
       # - DB_USERNAME=root
       # - DB_PASSWORD=root
       - APP_ENV: production
-      - APP_KEY: ${APP_KEY}
+      - APP_KEY: base64:IaYGqEqLvtsOegNgR5oAnAvUy6/JU/MIwUU2KF1NJik=
       - APP_URL: ${RAILWAY_STATIC_URL}
       - DB_HOST: ${MYSQLHOST}
       - DB_PORT: ${MYSQLPORT}
@@ -47,18 +47,18 @@ services:
     networks:
       - app_network
 
-  phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        ports:
-            - "9999:80"
-        environment:
-            PMA_HOST: mysql
-            PMA_USER: root
-            PMA_PASSWORD: root
-        networks:
-            - app_network
-        depends_on:
-            - mysql
+  # phpmyadmin:
+  #       image: phpmyadmin/phpmyadmin
+  #       ports:
+  #           - "9999:80"
+  #       environment:
+  #           PMA_HOST: mysql
+  #           PMA_USER: root
+  #           PMA_PASSWORD: root
+  #       networks:
+  #           - app_network
+  #       depends_on:
+  #           - mysql
 
 networks:
   app_network:
