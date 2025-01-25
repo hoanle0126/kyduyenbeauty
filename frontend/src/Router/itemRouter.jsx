@@ -12,6 +12,8 @@ import DashboardPage from "../Pages/Admin/DashboardPage";
 import ProductPage from "../Pages/Admin/ProductPage";
 import AddProductPage from "../Pages/Admin/ProductPage/AddPage";
 import UpdateProductPage from "../Pages/Admin/ProductPage/UpdatePage";
+import PoliciesPage from "../Pages/Client/PoliciesPage";
+import ContactPage from "../Pages/Client/ContactPage";
 
 const itemRouter = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ const itemRouter = createBrowserRouter([
       {
         path: "/checkout-success",
         element: <OrderSuccessPage />,
+      },
+      {
+        path: "/terms-and-policies",
+        element: <PoliciesPage />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactPage />,
       },
     ],
   },

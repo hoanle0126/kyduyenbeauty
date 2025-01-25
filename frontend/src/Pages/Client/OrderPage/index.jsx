@@ -29,6 +29,7 @@ import getParams from "@/Function/getParams";
 import ProductsData from "../../../data/ProductsData";
 import { useNavigate, Link } from "react-router-dom";
 import { useStateContext } from "../../../Context";
+import formatPhoneNumber from "../../../Function/formatPhoneNumber";
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -92,17 +93,16 @@ const steps = ["Cart", "Billing & address", "Payment"];
 
 export const sumPrice = (products) => {
   return products?.reduce(
-    (total, item) => total + item.price_value * item.quantity,
+    (total, item) => total + item.price_total * item.quantity_cart,
     0
   );
 };
 
 const CheckoutPage = () => {
-  const [step, setStep] = React.useState(0);
-  const [order, setOrder] = React.useState({
-    products: ProductsData(),
-  });
-  const { cart, setCart } = useStateContext();
+  const { search } = window.location; // Lấy query string hiện tại
+  const searchParams = new URLSearchParams(search);
+  const navigate = useNavigate();
+  const { cart } = useStateContext();
 
   return (
     <Stack>
@@ -168,7 +168,7 @@ const CheckoutPage = () => {
           <Stack sx={{ width: "100%" }} spacing={4}>
             <Stepper
               alternativeLabel
-              activeStep={step}
+              activeStep={searchParams.get("step") || 0}
               connector={<QontoConnector />}
             >
               {steps.map((label) => (
@@ -189,20 +189,17 @@ const CheckoutPage = () => {
           }}
         >
           <Box>
-            {[
-              <CardDataGrid order={cart} setOrder={setCart} />,
-              <ListAddress
-                backAction={() => setStep(0)}
-                setStep={setStep}
-                order={cart}
-                setOrder={setCart}
-              />,
-              <PaymentStep order={cart} setOrder={setCart} />,
-            ].map((value, index) => (
-              <CustomTabPanel tab={step} index={index} key={index}>
-                {value}
-              </CustomTabPanel>
-            ))}
+            {[<CardDataGrid />, <ListAddress />, <PaymentStep />].map(
+              (value, index) => (
+                <CustomTabPanel
+                  tab={searchParams.get("step") || 0}
+                  index={index}
+                  key={index}
+                >
+                  {value}
+                </CustomTabPanel>
+              )
+            )}
           </Box>
         </Grid2>
         <Grid2
@@ -213,7 +210,7 @@ const CheckoutPage = () => {
           }}
         >
           <Stack gap={"32px"}>
-            <CustomTabPanel tab={step} index={2}>
+            <CustomTabPanel tab={searchParams.get("step") || 0} index={2}>
               <Box
                 sx={{
                   boxShadow: "custom.card",
@@ -231,7 +228,7 @@ const CheckoutPage = () => {
                   <Button
                     color="common"
                     startIcon={<Icon icon="solar:pen-bold" />}
-                    onClick={() => setStep(1)}
+                    onClick={() => navigate("/checkout?step=" + 1)}
                   >
                     Edit
                   </Button>
@@ -239,17 +236,15 @@ const CheckoutPage = () => {
                 <Stack gap={"12px"} paddingTop={"24px"}>
                   <Stack direction={"row"} gap={"8px"}>
                     <Typography variant="subtitle2" color="text.primary">
-                      Jayvion Simon
-                    </Typography>
-                    <Typography variant="body2" color={"text.secondary"}>
-                      (Home)
+                      {cart.address.first_name} {cart.address.last_name}
                     </Typography>
                   </Stack>
                   <Typography variant="body2" color={"text.secondary"}>
-                    19034 Verna Unions Apt. 164 - Honolulu, RI / 87535
+                    {cart.address.street_address}, {cart.address.city},{" "}
+                    {cart.address.state} {cart.address.zip}, USA
                   </Typography>
                   <Typography variant="body2" color={"text.secondary"}>
-                    +1 202-555-0143
+                    {formatPhoneNumber(cart.address.phone)}
                   </Typography>
                 </Stack>
               </Box>
@@ -268,11 +263,11 @@ const CheckoutPage = () => {
                   Order summary
                 </Typography>
                 <div className="flex-1"></div>
-                {step != 0 && (
+                {searchParams.get("step") != 0 && (
                   <Button
                     color="common"
                     startIcon={<Icon icon="solar:pen-bold" />}
-                    onClick={() => setStep(0)}
+                    onClick={() => navigate("/checkout?step=" + 0)}
                   >
                     Edit
                   </Button>
@@ -285,16 +280,16 @@ const CheckoutPage = () => {
                   </Typography>
                   <div className="flex-1"></div>
                   <Typography variant="subtitle2" color="text.primary">
-                    {formatCurrency(order.total)}
+                    {formatCurrency(sumPrice(cart.products))}
                   </Typography>
                 </Stack>
                 <Stack direction={"row"}>
                   <Typography variant="body2" color="text.primary">
-                    Discount
+                    Tax
                   </Typography>
                   <div className="flex-1"></div>
                   <Typography variant="subtitle2" color="text.primary">
-                    -$5
+                    {formatCurrency(0)}
                   </Typography>
                 </Stack>
                 <Stack direction={"row"}>
@@ -318,25 +313,25 @@ const CheckoutPage = () => {
                   </Typography>
                   <div className="flex-1"></div>
                   <Typography variant="h6" color={"error.main"}>
-                    {formatCurrency(order.total)}
+                    {formatCurrency(sumPrice(cart.products))}
                   </Typography>
                 </Stack>
               </Stack>
             </Box>
-            <CustomTabPanel tab={step} index={0}>
+            <CustomTabPanel tab={searchParams.get("step") || 0} index={0}>
               <Button
                 variant="contained"
                 color="common"
                 size="large"
                 fullWidth
                 onClick={() => {
-                  setStep(1);
+                  navigate("/checkout?step=" + 1);
                 }}
               >
                 Check Out
               </Button>
             </CustomTabPanel>
-            <CustomTabPanel tab={step} index={2}>
+            <CustomTabPanel tab={searchParams.get("step") || 0} index={2}>
               <Button
                 variant="contained"
                 color="common"

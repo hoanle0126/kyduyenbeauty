@@ -43,7 +43,7 @@ const SortSection = () => {
             navigate(`?${searchParams.toString()}`);
           }}
         >
-          <MenuItem value={"name"}>Sort by name product</MenuItem>
+          <MenuItem value={"created_at"}>Sort by date</MenuItem>
           <MenuItem value={"price_total"}>Sort by price</MenuItem>
         </Select>
       </FormControl>

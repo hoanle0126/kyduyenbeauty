@@ -32,6 +32,7 @@
     "@mui/material": "^6.3.0",
     "@mui/x-data-grid": "^7.23.6",
     "@mui/x-date-pickers": "^7.23.6",
+    "@square/web-sdk": "^2.0.1",
     "@tiptap/extension-bullet-list": "^2.5.7",
     "@tiptap/extension-color": "^2.5.7",
     "@tiptap/extension-hard-break": "^2.5.7",

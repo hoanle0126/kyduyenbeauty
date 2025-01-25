@@ -44,9 +44,7 @@ const ClientLayout = () => {
       ) : (
         <>
           <ClientHeader />
-          <Box sx={{ minHeight: "calc(100vh - 66px)" }}>
-            <Outlet />
-          </Box>
+          <Outlet />
           <ClientFooter />
         </>
       )}

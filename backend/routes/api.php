@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -16,3 +17,5 @@ Route::apiResource("/categories", CategoryController::class);
 Route::get("/all-products", function () {
     return ProductResource::collection(Product::all());
 });
+Route::post('/payment', [PaymentController::class, 'processPayment']);
+

@@ -17,12 +17,12 @@ class ProductController extends Controller
     {
 
         $category = request()->get("category");
-        $price = request()->get("price");
+        $price_value = request()->get("price");
         $sort = request()->get("sort");
         $asc = request()->get("asc");
         $search = request()->get("search");
         $sort = request()->get("sort");
-        $range = explode("-", $price);
+        $range = explode("-", $price_value);
         $paginate = request()->get("paginate");
         $manager = request()->get("manager");
         $products = Product::query();
@@ -30,8 +30,11 @@ class ProductController extends Controller
 
         if ($category) {
             $products = $products->where("category_id", $category);
+            return response()->json([
+                "test1" => "null"
+            ]);
         }
-        if ($price) {
+        if ($price_value) {
             $products = $products->where("price", "<=", $range[1]);
             $products = $products->where("price", ">=", $range[0]);
         }
@@ -39,7 +42,7 @@ class ProductController extends Controller
             $products = $products->where("name", "like", $search . "%");
         }
         if ($sort) {
-            $products = $products->orderBy($sort, $asc || $asc == true ? "asc" : "desc");
+            $products = $products->orderBy($sort, $asc == "true" ? "asc" : "desc");
         }
 
         return ProductResource::collection($products->paginate($paginate ? $paginate : 8));

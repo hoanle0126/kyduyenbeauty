@@ -22,9 +22,13 @@ import React from "react";
 import { Palette } from "@/Theme/elements/palette";
 import AddAddressModal from "./components/AddAddressModal";
 import { MuiTheme } from "../../../../../Theme";
+import { useNavigate } from "react-router-dom";
+import { useStateContext } from "../../../../../Context";
 
-const ListAddress = ({ backAction, setStep, order, setOrder }) => {
+const ListAddress = () => {
+  const { cart, setCart } = useStateContext();
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [address, setAddress] = React.useState({
@@ -38,14 +42,21 @@ const ListAddress = ({ backAction, setStep, order, setOrder }) => {
     default: true,
   });
 
+  React.useEffect(() => {
+    setCart({ ...cart, address: address });
+  }, [address]);
+
   return (
     <>
       <AddAddressModal open={open} handleClose={handleClose} />
-      <Stack gap={"32px"} sx={{
-        padding:"40px",
-        boxShadow:"custom.card",
-        borderRadius:"20px"
-      }}>
+      <Stack
+        gap={"32px"}
+        sx={{
+          padding: "40px",
+          boxShadow: "custom.card",
+          borderRadius: "20px",
+        }}
+      >
         <Typography variant="h4">Shipping address</Typography>
         <Grid2 container spacing="12px">
           <Grid2 size={4}>
@@ -181,7 +192,7 @@ const ListAddress = ({ backAction, setStep, order, setOrder }) => {
         <Button
           color="common"
           startIcon={<Icon icon="eva:arrow-back-fill" width="28" height="28" />}
-          onClick={() => backAction()}
+          onClick={() => navigate("/checkout?step=" + 0)}
         >
           Back
         </Button>
@@ -190,7 +201,7 @@ const ListAddress = ({ backAction, setStep, order, setOrder }) => {
           color="common"
           variant="contained"
           startIcon={<Icon icon="eva:plus-fill" />}
-          onClick={()=>setStep(2)}
+          onClick={() => navigate("/checkout?step=" + 2)}
         >
           Submit
         </Button>

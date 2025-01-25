@@ -24,6 +24,9 @@ const ClientHeader = () => {
   const [openSearch, setOpenSearch] = React.useState(false);
   const upSm = useMediaQuery(MuiTheme().breakpoints.up("sm"));
   const upMd = useMediaQuery(MuiTheme().breakpoints.up("md"));
+
+  console.log(cart);
+
   return (
     <Box
       component="header"
@@ -67,9 +70,8 @@ const ClientHeader = () => {
             {[
               { title: "Home", route: "/" },
               { title: "Shop", route: "/shop" },
-              { title: "About us", route: "#" },
-              { title: "Contact us", route: "#" },
-              { title: "Terms & Policies", route: "#" },
+              { title: "Contact us", route: "/contact-us" },
+              { title: "Terms & Policies", route: "/terms-and-policies" },
             ].map((navItem, navIndex) => (
               <Link to={navItem.route} key={navIndex}>
                 {navItem.title}
@@ -99,7 +101,9 @@ const ClientHeader = () => {
         >
           <Badge
             badgeContent={
-              <Typography variant="captiontext">{cart.length}</Typography>
+              <Typography variant="captiontext">
+                {cart?.products.length}
+              </Typography>
             }
             color="error"
           >

@@ -11,8 +11,11 @@ import {
   IconButton,
 } from "@mui/material";
 import React from "react";
+import { useStateContext } from "../../../../../Context";
 
-const PaymentStep = ({ order, setOrder }) => {
+const PaymentStep = () => {
+  const { cart, setCart } = useStateContext();
+  
   return (
     <Stack gap={"32px"}>
       <Box
@@ -52,9 +55,9 @@ const PaymentStep = ({ order, setOrder }) => {
                   gap: "16px",
                   cursor: "pointer",
                   outline:
-                    order?.payment?.title === it.title && "2px solid black",
+                    cart?.payment?.title === it.title && "2px solid black",
                 }}
-                onClick={() => setOrder({ ...order, payment: it })}
+                onClick={() => setCart({ ...cart, payment: it })}
               >
                 <Stack gap={"8px"}>
                   <Typography variant="subtitle1" color="text.primary">
@@ -72,7 +75,7 @@ const PaymentStep = ({ order, setOrder }) => {
                   color={MuiTheme().palette.text.primary}
                 />
               </Box>
-              {order?.payment?.title === it.title && it.title !== "Cash" && (
+              {cart?.payment?.title === it.title && it.title !== "Cash" && (
                 <Stack
                   sx={{
                     padding: "20px",
