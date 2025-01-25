@@ -129,7 +129,7 @@ const CategorySection = () => {
                     />
                   </Box>
                 ))
-              : categories?.categories.map((item, index) => (
+              : categories?.categories?.map((item, index) => (
                   <Box
                     sx={{
                       flex: {

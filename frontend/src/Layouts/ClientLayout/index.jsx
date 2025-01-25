@@ -45,7 +45,7 @@ const ClientLayout = () => {
         <>
           <ClientHeader />
           <Outlet />
-          <ClientFooter />
+          {/* <ClientFooter /> */}
         </>
       )}
     </>
