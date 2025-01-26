@@ -107,7 +107,7 @@ const CheckoutPage = () => {
 
   return (
     <Stack>
-      <HeaderHelmet title={"Order page"}/>
+      <HeaderHelmet title={"Order page"} />
       <Stack>
         <Box
           sx={{
@@ -238,15 +238,15 @@ const CheckoutPage = () => {
                 <Stack gap={"12px"} paddingTop={"24px"}>
                   <Stack direction={"row"} gap={"8px"}>
                     <Typography variant="subtitle2" color="text.primary">
-                      {cart.address.first_name} {cart.address.last_name}
+                      {cart.address?.first_name} {cart.address?.last_name}
                     </Typography>
                   </Stack>
                   <Typography variant="body2" color={"text.secondary"}>
-                    {cart.address.street_address}, {cart.address.city},{" "}
-                    {cart.address.state} {cart.address.zip}, USA
+                    {cart.address?.street_address}, {cart.address?.city},{" "}
+                    {cart.address?.state} {cart.address?.zip}, USA
                   </Typography>
                   <Typography variant="body2" color={"text.secondary"}>
-                    {formatPhoneNumber(cart.address.phone)}
+                    {formatPhoneNumber(cart.address?.phone)}
                   </Typography>
                 </Stack>
               </Box>
