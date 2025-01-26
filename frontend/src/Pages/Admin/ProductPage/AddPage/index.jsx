@@ -111,14 +111,11 @@ const AddProductPage = () => {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={product.category}
+                  value={Number(product?.category_id)}
                   label="Categories"
                   color="custom"
                   onChange={(e) =>
-                    setProduct({
-                      ...product,
-                      category: e.target.value,
-                    })
+                    setProduct({ ...product, category_id: e.target.value })
                   }
                 >
                   {categories.categories?.map((category, index) => (

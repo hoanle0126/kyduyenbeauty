@@ -82,7 +82,7 @@ export const ElementModal = ({
                                     flex: 1,
                                 }}
                             />
-                            {valueIndex === param.value.length - 1 && (
+                            {/* {valueIndex === param.value.length - 1 && (
                                 <IconButton
                                     sx={{ borderRadius: "16px" }}
                                     onClick={() =>
@@ -97,7 +97,7 @@ export const ElementModal = ({
                                         width={32}
                                     />
                                 </IconButton>
-                            )}
+                            )} */}
                         </Stack>
                     ))}
                 <Button

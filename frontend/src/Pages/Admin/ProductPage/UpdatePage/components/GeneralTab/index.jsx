@@ -127,83 +127,23 @@ const GeneralTab = ({ product, setProduct }) => {
           </Stack>
           <Stack gap={"8px"}>
             <Typography variant="subtitle2">Sales</Typography>
-            <Button
-              variant="outlined"
-              color="common"
-              onClick={() => {
-                product?.sales !== null
-                  ? setProduct({ ...product, sales: null })
-                  : setProduct({
-                      ...product,
-                      sales: {
-                        value: 0,
-                      },
-                    });
-              }}
-            >
-              {product?.sales === null ? "Add" : "Remove"} sales
-            </Button>
-
-            <Collapse in={product?.sales !== null} timeout="auto" unmountOnExit>
-              <Stack overflow="hidden" gap="12px" paddingTop="12px">
-                <TextField
-                  value={product?.sales?.value || 0}
-                  onChange={(e) =>
-                    setProduct({
-                      ...product,
-                      sales: {
-                        ...product.sales,
-                        value: e.target.value,
-                      },
-                    })
-                  }
-                  label="Value"
-                />
-                <TextField
-                  value={product?.sales?.description}
-                  onChange={(e) =>
-                    setProduct({
-                      ...product,
-                      sales: {
-                        ...product?.sales,
-                        description: e.target.value,
-                      },
-                    })
-                  }
-                  label="Description"
-                />
-                <Stack direction="row" gap="20px">
-                  <DatePicker
-                    value={dayjs(product?.sales?.created_at)}
-                    onChange={(e) =>
-                      setProduct({
-                        ...product,
-                        sales: {
-                          ...product.sales,
-                          created_at: dayjs(e),
-                        },
-                      })
-                    }
-                    label={"Start date"}
-                    sx={{ flex: 1 }}
-                  />
-                  <DatePicker
-                    onChange={(e) =>
-                      setProduct({
-                        ...product,
-                        sales: {
-                          ...product?.sales,
-                          end_at: dayjs(e),
-                        },
-                      })
-                    }
-                    value={dayjs(product?.sales?.end_at)}
-                    label={"End date"}
-                    sx={{ flex: 1 }}
-                  />
-                </Stack>
-              </Stack>
-            </Collapse>
+            <OutlinedInput
+              size="small"
+              color="custom"
+              fullWidth
+              type="number"
+              placeholder="Enter sales price..."
+              value={product?.sales}
+              onChange={(e) =>
+                setProduct({
+                  ...product,
+                  sales: e.target.value,
+                })
+              }
+            />
+            <Typography variant="captiontext" color={"text.disabled"}>
+              A product name is required and recommended to be unique.
+            </Typography>
           </Stack>
         </Stack>
       </Card>

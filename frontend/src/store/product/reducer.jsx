@@ -43,7 +43,7 @@ const ProductReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         products: action.payload.data,
-        page: action.payload.mete,
+        page: action.payload.meta,
       };
     case GET_PRODUCT_REQUEST:
       return {

@@ -31,11 +31,13 @@ import FilterSection from "./Components/FilterSection";
 import SortSection from "./Components/SortSection";
 import ProductSection from "./Components/ProductSection";
 import convertText from "@/Function/converText";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../../../store/categories/action";
+import HeaderHelmet from "../../../Components/Header";
 
 const ShopPage = () => {
+  const navigate = useNavigate();
   const [age, setAge] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
   const { search } = window.location; // Lấy query string hiện tại
@@ -44,8 +46,13 @@ const ShopPage = () => {
   const upMd = useMediaQuery(MuiTheme().breakpoints.up("md"));
   const upLg = useMediaQuery(MuiTheme().breakpoints.up("lg"));
 
+  const products = useSelector((store) => store.products);
+
+  console.log("product", products);
+
   return (
     <>
+      <HeaderHelmet title={"Shop Cao Kỳ Duyên Beauty"}/>
       <Stack
         sx={{
           gap: "40px",
@@ -120,7 +127,14 @@ const ShopPage = () => {
             <SortSection />
             <ProductSection />
             <Stack alignItems="center" marginTop="20px">
-              <Pagination count={4} page={1} />
+              <Pagination
+                count={products.page?.last_page}
+                page={products.page?.current_page}
+                onChange={(e, value) => {
+                  searchParams.set("page", value);
+                  navigate(`?${searchParams.toString()}`);
+                }}
+              />
             </Stack>
           </Stack>
         </Stack>

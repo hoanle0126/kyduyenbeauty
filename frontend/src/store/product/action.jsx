@@ -99,7 +99,7 @@ export const updateProduct =
           action();
         })
         .catch((e) => {
-          console.log(e);
+          console.log("error", e);
         });
     } catch (error) {
       dispatch({ type: UPDATE_PRODUCT_FAILURE, error: null });

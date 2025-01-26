@@ -14,6 +14,9 @@ import AddProductPage from "../Pages/Admin/ProductPage/AddPage";
 import UpdateProductPage from "../Pages/Admin/ProductPage/UpdatePage";
 import PoliciesPage from "../Pages/Client/PoliciesPage";
 import ContactPage from "../Pages/Client/ContactPage";
+import CategoriesPage from "../Pages/Admin/CategoriesPage";
+import CategoriesAddPage from "../Pages/Admin/CategoriesPage/AddPage";
+import CategoriesViewPage from "../Pages/Admin/CategoriesPage/ViewPage";
 
 const itemRouter = createBrowserRouter([
   {
@@ -69,6 +72,18 @@ const itemRouter = createBrowserRouter([
       {
         path: "/admin/products/:id",
         element: <UpdateProductPage />,
+      },
+      {
+        path: "/admin/categories",
+        element: <CategoriesPage />,
+      },
+      {
+        path: "/admin/categories/create",
+        element: <CategoriesAddPage />,
+      },
+      {
+        path: "/admin/categories/:id",
+        element: <CategoriesViewPage />,
       },
     ],
   },

@@ -17,6 +17,7 @@ import { MuiTheme } from "../../../../Theme";
 import SearchModal from "./components/SearchModal";
 import { Link, useNavigate } from "react-router-dom";
 import { useStateContext } from "../../../../Context";
+import MainLogo from "../../../../assets/mainLogo";
 
 const ClientHeader = () => {
   const navigate = useNavigate();
@@ -24,8 +25,6 @@ const ClientHeader = () => {
   const [openSearch, setOpenSearch] = React.useState(false);
   const upSm = useMediaQuery(MuiTheme().breakpoints.up("sm"));
   const upMd = useMediaQuery(MuiTheme().breakpoints.up("md"));
-
-  console.log(cart);
 
   return (
     <Box
@@ -51,10 +50,7 @@ const ClientHeader = () => {
     >
       {upMd ? (
         <>
-          <img
-            src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/473055084_122204641466235489_8675126516273107006_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=B_bzvTVBjeUQ7kNvgFlm3T0&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=AnvWLTXy0bUPQfsTJTLN7H3&oh=00_AYAjKjGfGBy9YeK2GfjIZuzilsSFNKzEMaSPEgXsOOQRQQ&oe=6790529C"
-            className="w-[40px] h-[40px] rounded-full"
-          ></img>
+          <img src={MainLogo} className="w-[40px] h-[40px] rounded-full"></img>
           <Stack
             direction="row"
             sx={{

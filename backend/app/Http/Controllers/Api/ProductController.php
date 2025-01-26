@@ -17,12 +17,12 @@ class ProductController extends Controller
     {
 
         $category = request()->get("category");
-        $price_value = request()->get("price");
+        $price = request()->get("price");
         $sort = request()->get("sort");
         $asc = request()->get("asc");
         $search = request()->get("search");
         $sort = request()->get("sort");
-        $range = explode("-", $price_value);
+        $range = explode("-", $price);
         $paginate = request()->get("paginate");
         $manager = request()->get("manager");
         $products = Product::query();
@@ -30,11 +30,8 @@ class ProductController extends Controller
 
         if ($category) {
             $products = $products->where("category_id", $category);
-            return response()->json([
-                "test1" => "null"
-            ]);
         }
-        if ($price_value) {
+        if ($price) {
             $products = $products->where("price", "<=", $range[1]);
             $products = $products->where("price", ">=", $range[0]);
         }
@@ -42,7 +39,7 @@ class ProductController extends Controller
             $products = $products->where("name", "like", $search . "%");
         }
         if ($sort) {
-            $products = $products->orderBy($sort, $asc == "true" ? "asc" : "desc");
+            $products = $products->orderBy($sort, $asc || $asc == true ? "asc" : "desc");
         }
 
         return ProductResource::collection($products->paginate($paginate ? $paginate : 8));
@@ -57,14 +54,15 @@ class ProductController extends Controller
             'name' => $request->name,
             'key_name' => Str::slug($request->name, '-'),
             'description' => $request->description,
+            'detail' => $request->detail,
             'thumbnail' => $request->thumbnail,
-            'category_id' => $request->category,
+            'category_id' => $request->category_id,
             'ingredient' => $request->ingredient,
             'sales' => $request->sales,
             'price' => $request->price,
             'images' => $request->images,
-            'remain' => $request->quantity,
-            'quantity' => $request->quantity
+            'quantity' => $request->quantity,
+            'remain' => $request->remain,
         ]);
 
     }

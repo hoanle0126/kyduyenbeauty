@@ -30,6 +30,7 @@ import ProductsData from "../../../data/ProductsData";
 import { useNavigate, Link } from "react-router-dom";
 import { useStateContext } from "../../../Context";
 import formatPhoneNumber from "../../../Function/formatPhoneNumber";
+import HeaderHelmet from "../../../Components/Header";
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -106,6 +107,7 @@ const CheckoutPage = () => {
 
   return (
     <Stack>
+      <HeaderHelmet title={"Order page"}/>
       <Stack>
         <Box
           sx={{

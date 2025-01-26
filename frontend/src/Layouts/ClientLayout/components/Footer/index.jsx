@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 import { Box, Button, OutlinedInput, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
+import MainLogo from "../../../../assets/mainLogo";
 
 const ClientFooter = () => {
   const categories = useSelector((store) => store.categories);
@@ -38,17 +39,12 @@ const ClientFooter = () => {
           sx={{
             width: "100px",
             height: "100px",
-            backgroundColor: "grey.900",
             overflow: "hidden",
             marginBottom: "12px",
             borderRadius: "50%",
           }}
         >
-          <img
-            src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/473055084_122204641466235489_8675126516273107006_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=B_bzvTVBjeUQ7kNvgFlm3T0&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=AnvWLTXy0bUPQfsTJTLN7H3&oh=00_AYAjKjGfGBy9YeK2GfjIZuzilsSFNKzEMaSPEgXsOOQRQQ&oe=6790529C"
-            alt=""
-            className="w-full h-full"
-          />
+          <img src={MainLogo} alt="" className="w-full h-full" />
         </Box>
         <Typography>Dallas , Dallas, TX, United States, Texas</Typography>
         <Stack direction="row" alignItems="center" gap="8px">

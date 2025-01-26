@@ -140,7 +140,6 @@ const ProductSection = () => {
                     >
                       {item.name}
                     </Typography>
-                    <Rating value={item.rating} readOnly />
                     <Typography variant="h6" color="error.main">
                       {formatCurrency(item.price)}
                     </Typography>

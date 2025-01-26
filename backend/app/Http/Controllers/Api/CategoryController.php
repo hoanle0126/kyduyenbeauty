@@ -30,7 +30,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = Category::create([
+            'name' => $request->name,
+            'thumbnail' => $request->thumbnail
+        ]);
+
+        return CategoryResource::collection(Category::all());
     }
 
     /**
@@ -38,7 +43,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return new CategoryResource($category);
     }
 
     /**
@@ -54,7 +59,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update([
+            'name' => $request->name,
+            'thumbnail' => $request->thumbnail
+        ]);
+
+        return CategoryResource::collection(Category::all());
     }
 
     /**
@@ -62,6 +72,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return CategoryResource::collection(Category::all());
     }
 }

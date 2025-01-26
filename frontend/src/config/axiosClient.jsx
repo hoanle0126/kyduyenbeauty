@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosClient = axios.create({
-  baseURL: `${import.meta.env.VITE_BACKEND_URL}/api`,
+  baseURL: `http://localhost:8000/api`,
 });
 
 axiosClient.interceptors.request.use((config) => {
@@ -12,7 +12,7 @@ axiosClient.interceptors.request.use((config) => {
 
 axiosClient.interceptors.response.use(
   (response) => {
-    return response;
+    return response;  
   },
   (error) => {
     const { response } = error;

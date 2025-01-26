@@ -54,6 +54,20 @@ const AdvancedTab = ({ product, setProduct }) => {
           />
         </Stack>
       </Card>
+      <Card>
+        <Stack gap={"20px"}>
+          <Typography variant="h6">Ingredients</Typography>
+          <ShowParam
+            parameter={product?.ingredient}
+            setParameter={(parameterValue) => {
+              setProduct({
+                ...product,
+                ingredient: parameterValue,
+              });
+            }}
+          />
+        </Stack>
+      </Card>
     </Stack>
   );
 };

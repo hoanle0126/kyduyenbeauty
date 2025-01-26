@@ -24,6 +24,7 @@ import { Landing2Image } from "assets/Landing2";
 import { Landing3Image } from "assets/Landing3";
 import { getAllCategories } from "../../../store/categories/action";
 import BestSellerSection from "./sections/BestSellerSection";
+import HeaderHelmet from "../../../Components/Header";
 
 const OPTIONS = { loop: true };
 const SLIDE_COUNT = 5;
@@ -45,6 +46,7 @@ const LandingPage = () => {
 
   return (
     <>
+      <HeaderHelmet title={"Cao Kỳ Duyên Beauty"}/>
       <Box
         sx={{
           display: "flex",
