@@ -35,6 +35,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../../../store/categories/action";
 import HeaderHelmet from "../../../Components/Header";
+import FilterDrawer from "./Components/FilterSection/FilterDrawer";
 
 const ShopPage = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const ShopPage = () => {
 
   return (
     <>
-      <HeaderHelmet title={"Shop Cao Kỳ Duyên Beauty"}/>
+      <HeaderHelmet title={"Shop Cao Kỳ Duyên Beauty"} />
       <Stack
         sx={{
           gap: "40px",
@@ -139,6 +140,7 @@ const ShopPage = () => {
           </Stack>
         </Stack>
       </Stack>
+      
     </>
   );
 };

@@ -11,17 +11,19 @@ import {
 import React from "react";
 import { MuiTheme } from "../../../../../Theme";
 import { useNavigate } from "react-router-dom";
+import FilterDrawer from "../FilterSection/FilterDrawer";
 
 const SortSection = () => {
   const navigate = useNavigate();
   const { search } = window.location; // Lấy query string hiện tại
   const searchParams = new URLSearchParams(search);
   const downLg = useMediaQuery(MuiTheme().breakpoints.down("lg"));
+  const [filterMenu, setFilterMenu] = React.useState(true);
 
   return (
     <Stack direction="row" gap="12px">
       {downLg && (
-        <IconButton>
+        <IconButton onClick={()=>setFilterMenu(true)}>
           <Icon icon="solar:filter-linear" width="24" height="24" />
         </IconButton>
       )}
@@ -75,6 +77,10 @@ const SortSection = () => {
           height="24"
         />
       </IconButton>
+      <FilterDrawer
+        open={filterMenu}
+        handleClose={() => setFilterMenu(false)}
+      />
     </Stack>
   );
 };
