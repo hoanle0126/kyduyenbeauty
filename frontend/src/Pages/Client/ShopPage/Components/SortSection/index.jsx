@@ -18,7 +18,7 @@ const SortSection = () => {
   const { search } = window.location; // Lấy query string hiện tại
   const searchParams = new URLSearchParams(search);
   const downLg = useMediaQuery(MuiTheme().breakpoints.down("lg"));
-  const [filterMenu, setFilterMenu] = React.useState(true);
+  const [filterMenu, setFilterMenu] = React.useState(false);
 
   return (
     <Stack direction="row" gap="12px">
