@@ -274,11 +274,6 @@ const ShopDetailPage = () => {
             <Grid2 size={12}>
               <Grid2
                 container
-                direction={{
-                  md: "row",
-                  sm: "row",
-                  xs: "column",
-                }}
                 gap={{
                   sm: 0,
                   xs: "40px",
@@ -306,7 +301,14 @@ const ShopDetailPage = () => {
                       "We offer reasonable prices, providing great value without compromising on quality.",
                   },
                 ].map((serviceItem, serviceIndex) => (
-                  <Grid2 size={4}>
+                  <Grid2
+                    size={{
+                      lg: 4,
+                      mg: 4,
+                      sm: 4,
+                      xs: 12,
+                    }}
+                  >
                     <Stack key={serviceIndex} alignItems={"center"} gap={"8px"}>
                       <Icon
                         icon={serviceItem.icon}
