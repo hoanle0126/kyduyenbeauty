@@ -2,6 +2,7 @@ import { formatCurrency } from "@/Function/formatCurrency";
 import { Icon } from "@iconify/react";
 import { Box, IconButton, Stack, Typography } from "@mui/material";
 import React from "react";
+import { useStateContext } from "../../../../../Context";
 
 function RenderProduct(props) {
   const { row, value, rows } = props;
@@ -112,6 +113,7 @@ function RenderQuantity(props) {
 
 function RenderAction(props) {
   const { row } = props;
+  const { cart, setCart } = useStateContext();
 
   return (
     <Box
@@ -122,7 +124,16 @@ function RenderAction(props) {
         height: "100%",
       }}
     >
-      <IconButton onClick={() => test()}>
+      <IconButton
+        onClick={() => {
+          let updatedProduct = cart.products.filter((item) => item.id !== row.id);
+          setCart((newCart) => ({
+            ...newCart,
+            products: updatedProduct,
+          }));
+          console.log(newCart);
+        }}
+      >
         <Icon icon="solar:trash-bin-trash-bold" />
       </IconButton>
     </Box>
