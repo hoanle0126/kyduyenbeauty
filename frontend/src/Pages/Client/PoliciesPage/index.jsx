@@ -41,7 +41,7 @@ const PoliciesPage = () => {
         </Typography>
         <Typography>
           We accept returns within 14 days after receiving an item. To start a
-          return, please contact us at info@jubbibeauty.com. Upon acceptance, a
+          return, please contact us at info@kyduyenbeauty.com. Upon acceptance, a
           return label will be provided along with instructions on where the
           package should be sent. Returns without prior approval will not be
           accepted.
@@ -52,8 +52,8 @@ const PoliciesPage = () => {
         <Typography>
           We will cover the return shipping costs if the return is a result of
           our error (incorrect or defective item). Reimbursement for shipping
-          costs will not be covered by Jubbibeauty for any returns or exchanges
-          in which Jubbibeauty are not at fault.
+          costs will not be covered by KyDuyenbeauty for any returns or exchanges
+          in which KyDuyenbeauty are not at fault.
         </Typography>
       </Stack>
       <Stack

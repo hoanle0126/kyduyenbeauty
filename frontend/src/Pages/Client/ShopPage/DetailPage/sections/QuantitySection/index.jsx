@@ -5,11 +5,14 @@ import React from "react";
 import ProductData from "../../../../../../data/ProductData";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import addCart from "../../../../../../Function/addCart";
+import { useStateContext } from "../../../../../../Context";
 
 const QuantitySection = React.memo(() => {
   const navigate = useNavigate();
   const props = useSelector((store) => store.products);
   const [quantityValue, setQuantityValue] = React.useState(1);
+  const { cart, setCart } = useStateContext();
 
   return (
     <>
@@ -74,7 +77,7 @@ const QuantitySection = React.memo(() => {
             <Icon icon="solar:cart-plus-bold" width={24} height={24} />
           }
           onClick={() => {
-            addCart(cart, setCart, shopItem, quantityValue);
+            addCart(cart, setCart, props.product, quantityValue);
             navigate("/checkout");
           }}
         >
