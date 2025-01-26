@@ -31,6 +31,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { useStateContext } from "../../../Context";
 import formatPhoneNumber from "../../../Function/formatPhoneNumber";
 import HeaderHelmet from "../../../Components/Header";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewOrder } from "../../../store/orders/action";
+import SuccessModal from "./components/SuccessModal";
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -103,7 +106,10 @@ const CheckoutPage = () => {
   const { search } = window.location; // Lấy query string hiện tại
   const searchParams = new URLSearchParams(search);
   const navigate = useNavigate();
-  const { cart } = useStateContext();
+  const dispatch = useDispatch();
+  const orderState = useSelector((store) => store.orders);
+  const { cart, setCart } = useStateContext();
+  const [successModal, setSuccessModal] = React.useState(false);
 
   return (
     <Stack>
@@ -339,21 +345,41 @@ const CheckoutPage = () => {
                 color="common"
                 size="large"
                 fullWidth
-                //   onClick={() => {
-                //     router.post(route("orders.store"), order, {
-                //       onSuccess: () => {
-                //         setOrder({});
-                //         router.visit(route("shops.index"));
-                //       },
-                //     });
-                //   }}
+                onClick={() => {
+                  console.log(cart);
+                  dispatch(addNewOrder(cart));
+                  !orderState.loading &&
+                    setCart({
+                      products: [],
+                      address: {
+                        first_name: "",
+                        last_name: "",
+                        phone: 0,
+                        street_address: "",
+                        city: "",
+                        state: "",
+                        zip: "",
+                        default: true,
+                      },
+                      payment: {
+                        title: "Cash",
+                        description:
+                          "Pay with cash when your order is delivered.",
+                        icon: "tabler:cash",
+                      },
+                    });
+                  !orderState.loading && setSuccessModal(true);
+                }}
               >
-                Complete Order
+                {orderState.loading ? "Loading" : "Complete Order"}
               </Button>
             </CustomTabPanel>
           </Stack>
         </Grid2>
       </Grid2>
+      <SuccessModal
+        open={successModal}
+      />
     </Stack>
   );
 };
