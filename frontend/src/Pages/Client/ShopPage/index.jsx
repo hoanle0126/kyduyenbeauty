@@ -133,7 +133,7 @@ const ShopPage = () => {
                 page={products.page?.current_page}
                 onChange={(e, value) => {
                   searchParams.set("page", value);
-                  navigate(`?${searchParams.toString()}`);
+                  navigate(`?${searchParams?.toString()}`);
                 }}
               />
             </Stack>

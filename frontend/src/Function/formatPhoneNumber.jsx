@@ -2,7 +2,7 @@ import React from "react";
 
 const formatPhoneNumber = (number) => {
   // Chuyển số thành chuỗi và thêm mã quốc gia
-  const phoneNumber = number.toString();
+  const phoneNumber = number?.toString();
 
   // Kiểm tra độ dài và định dạng số điện thoại
   if (phoneNumber.length === 9) {

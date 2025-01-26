@@ -60,7 +60,7 @@ const FilterCategory = () => {
               color="common"
               onChange={() => {
                 searchParams.set("category", filterItem.id);
-                navigate(`?${searchParams.toString()}`);
+                navigate(`?${searchParams?.toString()}`);
               }}
               checked={filterItem.id + "" === searchParams.get("category")}
             />

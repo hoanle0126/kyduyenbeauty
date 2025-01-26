@@ -73,8 +73,8 @@ const OrderTable = ({ rows, admin, tabs, status }) => {
         setSearchValue(value);
         const filtedRow = orders.filter((orderRowsItem) => {
             return (
-                orderRowsItem.id.toString().includes(value) ||
-                orderRowsItem.products.length.toString().includes(value) ||
+                orderRowsItem.id?.toString().includes(value) ||
+                orderRowsItem.products.length?.toString().includes(value) ||
                 formatCurrency(orderRowsItem.total_price).includes(value) ||
                 formatDate(orderRowsItem.created_at).includes(value) ||
                 orderRowsItem.products.some((it) => it.name.includes(value))
