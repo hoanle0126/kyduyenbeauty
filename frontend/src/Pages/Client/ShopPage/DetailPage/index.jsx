@@ -78,7 +78,7 @@ const ShopDetailPage = () => {
         </Stack>
       ) : (
         <Stack gap="40px" paddingBottom="80px">
-          <HeaderHelmet title={product.product.name} />
+          <HeaderHelmet title={product.product?.name} />
           <Stack>
             <Box
               sx={{
