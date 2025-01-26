@@ -105,7 +105,7 @@ const ClientHeader = () => {
           <Badge
             badgeContent={
               <Typography variant="captiontext">
-                {cart?.products.length}
+                {cart?.products?.length}
               </Typography>
             }
             color="error"
