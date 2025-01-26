@@ -9,7 +9,7 @@ const SuccessModal = ({ open }) => {
   const navigate = useNavigate();
 
   return (
-    <Modal open={true}>
+    <Modal open={open}>
       <Stack
         sx={{
           position: "absolute",
