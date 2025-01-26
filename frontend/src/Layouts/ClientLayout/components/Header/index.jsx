@@ -10,21 +10,27 @@ import {
   Button,
   Badge,
   useMediaQuery,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
 } from "@mui/material";
 import React from "react";
 import AvatarHeader from "./components/AvatarHeader";
 import { MuiTheme } from "../../../../Theme";
 import SearchModal from "./components/SearchModal";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useStateContext } from "../../../../Context";
 import MainLogo from "../../../../assets/mainLogo";
 
 const ClientHeader = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { cart } = useStateContext();
   const [openSearch, setOpenSearch] = React.useState(false);
   const upSm = useMediaQuery(MuiTheme().breakpoints.up("sm"));
   const upMd = useMediaQuery(MuiTheme().breakpoints.up("md"));
+  const [menu, setMenu] = React.useState(true);
 
   return (
     <Box
@@ -76,7 +82,7 @@ const ClientHeader = () => {
           </Stack>
         </>
       ) : (
-        <IconButton>
+        <IconButton onClick={() => setMenu(true)}>
           <Icon icon="solar:hamburger-menu-linear" width={32} height={32} />
         </IconButton>
       )}
@@ -108,6 +114,68 @@ const ClientHeader = () => {
         </IconButton>
       </Stack>
       <SearchModal open={openSearch} handleClose={() => setOpenSearch(false)} />
+      <Drawer open={menu} onClose={() => setMenu(false)}>
+        <Stack
+          sx={{
+            width: "100vw",
+          }}
+        >
+          <Stack
+            sx={{
+              alignItems: "center",
+              flexDirection: "row",
+              padding: "20px",
+              borderBottom: "1px solid black",
+              borderColor: "divider",
+              gap: "12px",
+            }}
+          >
+            <img src={MainLogo} alt="" className="w-[40px] h-[40px]" />
+            <Typography
+              sx={{
+                display: {
+                  sm: "block",
+                  xs: "none",
+                },
+              }}
+              variant="h5"
+            >
+              Kỳ Duyên Beauty
+            </Typography>
+            <div className="flex-1"></div>
+            <Icon
+              icon="eva:close-fill"
+              width="40"
+              height="40"
+              onClick={() => setMenu(false)}
+              className="cursor-pointer"
+            />
+          </Stack>
+          <List disablePadding>
+            {[
+              { title: "Home", route: "/" },
+              { title: "Shop", route: "/shop" },
+              { title: "Contact us", route: "/contact-us" },
+              { title: "Terms & Policies", route: "/terms-and-policies" },
+            ].map((listItem, listIndex) => (
+              <ListItemButton
+                key={listIndex}
+                onClick={() => {
+                  navigate(listItem.route);
+                  setMenu(false);
+                }}
+                sx={{
+                  backgroundColor:
+                    location.pathname === listItem.route &&
+                    "background.neutral",
+                }}
+              >
+                {listItem.title}
+              </ListItemButton>
+            ))}
+          </List>
+        </Stack>
+      </Drawer>
     </Box>
   );
 };
