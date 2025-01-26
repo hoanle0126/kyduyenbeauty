@@ -30,7 +30,7 @@ const ClientHeader = () => {
   const [openSearch, setOpenSearch] = React.useState(false);
   const upSm = useMediaQuery(MuiTheme().breakpoints.up("sm"));
   const upMd = useMediaQuery(MuiTheme().breakpoints.up("md"));
-  const [menu, setMenu] = React.useState(true);
+  const [menu, setMenu] = React.useState(false);
 
   return (
     <Box
