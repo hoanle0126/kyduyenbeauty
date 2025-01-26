@@ -8,7 +8,7 @@ const StateContext = createContext({
 });
 
 const ThemeContext = ({ children }) => {
-  const savedCart = JSON.parse(localStorage.getItem("cart_value")) || {
+  const savedCart = JSON.parse(localStorage.getItem("cart_user")) || {
     products: [],
     address: {
       first_name: "",
@@ -29,7 +29,7 @@ const ThemeContext = ({ children }) => {
   const [cart, setCart] = React.useState(savedCart);
 
   React.useEffect(() => {
-    localStorage.setItem("cart_value", JSON.stringify(cart));
+    localStorage.setItem("cart_user", JSON.stringify(cart));
   }, [cart]);
 
   return (

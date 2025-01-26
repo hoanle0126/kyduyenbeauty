@@ -4,8 +4,10 @@ import { Button, Divider, IconButton, Stack, Typography } from "@mui/material";
 import React from "react";
 import ProductData from "../../../../../../data/ProductData";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const QuantitySection = React.memo(() => {
+  const navigate = useNavigate();
   const props = useSelector((store) => store.products);
   const [quantityValue, setQuantityValue] = React.useState(1);
 
@@ -71,11 +73,10 @@ const QuantitySection = React.memo(() => {
           startIcon={
             <Icon icon="solar:cart-plus-bold" width={24} height={24} />
           }
-          // onClick={() => {
-          //     router.post(route("cart.store", props.product?.id), {
-          //         quantity: quantityValue,
-          //     });
-          // }}
+          onClick={() => {
+            addCart(cart, setCart, shopItem, quantityValue);
+            navigate("/checkout");
+          }}
         >
           Add to card
         </Button>
