@@ -1,4 +1,4 @@
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Button, Stack, useMediaQuery } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import React, { useContext } from "react";
 import DataGridHeader from "./DataGridHeader";
@@ -7,10 +7,13 @@ import { MuiTheme } from "@/Theme";
 import { typography } from "@/Theme/elements/typography";
 import { Icon } from "@iconify/react";
 import { useStateContext } from "../../../../../Context";
+import DataGridHeaderXs from "./DataGridHeaderXs";
 
 const CardDataGrid = () => {
   const { cart, setCart } = useStateContext();
   const [products, setProducts] = React.useState(cart.products);
+  const downSm = useMediaQuery(MuiTheme().breakpoints.down("sm"));
+
   React.useEffect(() => {
     setCart({ ...cart, products: products });
   }, [products]);
@@ -25,9 +28,13 @@ const CardDataGrid = () => {
       >
         <DataGrid
           rows={cart.products}
-          columns={DataGridHeader(products, setProducts)}
+          columns={
+            downSm
+              ? DataGridHeaderXs(products, setProducts)
+              : DataGridHeader(products, setProducts)
+          }
           hideFooter
-          rowHeight={100}
+          rowHeight={downSm ? 120 : 100}
           disableColumnSorting
           disableColumnMenu
           disableColumnResize
