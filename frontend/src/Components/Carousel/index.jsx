@@ -40,7 +40,12 @@ const EmblaCarousel = (props) => {
               sx={{
                 flex: `0 0 ${numImage ? 100 / numImage : 100}%`,
                 img: {
-                  aspectRatio: "1920 / 1080",
+                  aspectRatio: {
+                    xs: "1920 / 1080",
+                    sm: "1920 / 950",
+                    md: "1920 / 880",
+                    lg: "1920 / 800",
+                  },
                 },
                 marginRight: spacing,
                 display: "flex",

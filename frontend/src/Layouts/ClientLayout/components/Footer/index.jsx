@@ -46,7 +46,7 @@ const ClientFooter = () => {
         >
           <img src={MainLogo} alt="" className="w-full h-full" />
         </Box>
-        <Typography>Dallas , Dallas, TX, United States, Texas</Typography>
+        <Typography>Dallas, Texas United State</Typography>
         <Stack direction="row" alignItems="center" gap="8px">
           <Icon icon="eva:email-outline" width={24} height={24} />
           <Typography variant="body2">Caokyduyenkrshop@gmail.com</Typography>
