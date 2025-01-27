@@ -64,10 +64,7 @@ const LandingPage = () => {
             position: "relative",
           }}
         >
-          <EmblaCarousel
-            slides={SLIDES}
-            options={OPTIONS}
-          />
+          <EmblaCarousel slides={SLIDES} options={OPTIONS} />
         </Box>
         <CategorySection />
         <ProductSection />
@@ -80,6 +77,12 @@ const LandingPage = () => {
             width: "100%",
             borderTop: "1px solid " + MuiTheme().palette.primary.lighter,
             borderBottom: "1px solid " + MuiTheme().palette.primary.lighter,
+            paddingX: {
+              xs: "30px",
+              sm: "60px",
+              md: "90px",
+              lg: "160px",
+            },
             "& .service__item": {
               padding: "20px",
               "&:nth-child(2)": {
