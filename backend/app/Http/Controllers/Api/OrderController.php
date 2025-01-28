@@ -34,6 +34,7 @@ class OrderController extends Controller
             "products" => $request->products,
             "address" => $request->address,
             "payment" => $request->payment,
+            "status" => $request->status
         ]);
 
         foreach ($request->products as $product) {
@@ -43,6 +44,7 @@ class OrderController extends Controller
                 "remain" => $updateProduct['remain'] - $product['quantity_cart']
             ]);
         }
+        return Order::all();
     }
 
     /**
@@ -50,7 +52,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return $order;
     }
 
     /**
@@ -66,7 +68,11 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $order->update([
+            "status" => $request->status,
+            "current_status" => $request->current_status
+        ]);
+        return Order::all();
     }
 
     /**
@@ -74,6 +80,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return Order::all();
     }
 }

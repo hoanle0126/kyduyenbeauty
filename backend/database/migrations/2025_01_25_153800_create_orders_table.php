@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->json("products");
             $table->json("delivery");
             $table->json("payment");
+            $table->string("status")->default("Order Placed");
             $table->timestamps();
         });
     }

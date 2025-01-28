@@ -13,10 +13,13 @@ class Order extends Model
         "products",
         "address",
         "payment",
+        "status",
+        "current_status"
     ];
     protected $casts = [
         'products' => 'array',
         'address' => 'array',
-        "payment" => 'array'
+        "payment" => 'array',
+        "status" => 'array'
     ];
 }
