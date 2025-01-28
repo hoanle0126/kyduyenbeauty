@@ -34,14 +34,14 @@ export const OrderReducer = (state = initialState, action) => {
     case ADD_NEW_ORDER_SUCCESS:
     case UPDATE_ORDER_SUCCESS:
     case DELETE_ORDER_SUCCESS:
-      return { ...state, loading: false, order: action.payload };
+      return { ...state, loading: false, orders: action.payload };
     case GET_ORDER_SUCCESS:
       return { ...state, loading: false, order: action.payload };
     case GET_ALL_ORDERS_FAILURE:
     case ADD_NEW_ORDER_FAILURE:
     case UPDATE_ORDER_FAILURE:
     case DELETE_ORDER_FAILURE:
-      return { ...state, loading: true };
+      return { ...state, loading: false };
 
     default:
       return state;

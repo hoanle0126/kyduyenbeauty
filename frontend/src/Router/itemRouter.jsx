@@ -17,6 +17,8 @@ import ContactPage from "../Pages/Client/ContactPage";
 import CategoriesPage from "../Pages/Admin/CategoriesPage";
 import CategoriesAddPage from "../Pages/Admin/CategoriesPage/AddPage";
 import CategoriesViewPage from "../Pages/Admin/CategoriesPage/ViewPage";
+import OrderPage from "../Pages/Admin/OrderPage";
+import OrderDetailPage from "../Pages/Admin/OrderDetailPage";
 
 const itemRouter = createBrowserRouter([
   {
@@ -84,6 +86,14 @@ const itemRouter = createBrowserRouter([
       {
         path: "/admin/categories/:id",
         element: <CategoriesViewPage />,
+      },
+      {
+        path: "/admin/orders",
+        element: <OrderPage />,
+      },
+      {
+        path: "/admin/orders/:id",
+        element: <OrderDetailPage />,
       },
     ],
   },

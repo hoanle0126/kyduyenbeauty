@@ -39,12 +39,6 @@ const ListNavItems = () => {
           to: "/admin/orders",
           active: pathname.includes("/orders"),
         },
-        {
-          name: "Design",
-          icon: "solar:paint-roller-bold",
-          to: "/admin/designs",
-          active: pathname.includes("/designs"),
-        },
       ],
     },
   ];

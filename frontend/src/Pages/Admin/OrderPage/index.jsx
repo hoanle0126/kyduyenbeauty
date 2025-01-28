@@ -1,19 +1,23 @@
 import OrderTable from "@/Components/OrderTable";
 import AdminLayout from "@/Layouts/AdminLayout";
-import AdminDefaultLayout from "@/Layouts/AdminLayout/DefaultLayout";
-import { usePage } from "@inertiajs/react";
 import React from "react";
+import AdminDefaultLayout from "../../../Layouts/AdminLayout/DefaultLayout";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllOrders } from "../../../store/orders/action";
 
 const OrderPage = () => {
-    const { props } = usePage();
+  const dispatch = useDispatch();
+  const state = useSelector((store) => store.orders);
 
-    return (
-        <AdminLayout>
-            <AdminDefaultLayout title="Orders">
-                <OrderTable rows={props.orders} admin={true} tabs={true} />
-            </AdminDefaultLayout>
-        </AdminLayout>
-    );
+  React.useEffect(() => {
+    dispatch(getAllOrders());
+  }, []);
+
+  return (
+    <AdminDefaultLayout title="Orders">
+      <OrderTable rows={state.orders} admin={true} tabs={true} />
+    </AdminDefaultLayout>
+  );
 };
 
 export default OrderPage;
