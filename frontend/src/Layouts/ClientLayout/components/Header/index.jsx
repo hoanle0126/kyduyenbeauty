@@ -167,7 +167,6 @@ const ClientHeader = () => {
               height: "100%",
               alignItems: "start",
               paddingTop: "20px",
-              paddingRight: "10px",
             }}
           >
             {/* <IconButton onClick={() => setOpenSearch(true)}>
@@ -190,9 +189,9 @@ const ClientHeader = () => {
                 <Icon icon="solar:cart-5-broken" width={28} height={28} />
               </Badge>
             </IconButton>
-            <IconButton onClick={() => setMenu(true)}>
-              <Icon icon="solar:hamburger-menu-linear" width={32} height={32} />
-            </IconButton>
+            {/* <IconButton onClick={() => setMenu(true)}>
+              <Icon icon="solar:hamburger-menu-linear" width={28} height={28} />
+            </IconButton> */}
           </Stack>
         )}
         <SearchModal
