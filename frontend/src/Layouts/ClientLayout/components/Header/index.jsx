@@ -169,9 +169,9 @@ const ClientHeader = () => {
               paddingTop: "20px",
             }}
           >
-            <IconButton onClick={() => setOpenSearch(true)}>
+            {/* <IconButton onClick={() => setOpenSearch(true)}>
               <Icon icon="eva:search-fill" width={28} height={28} />
-            </IconButton>
+            </IconButton> */}
             <IconButton
               onClick={() => navigate("/checkout")}
               sx={{
