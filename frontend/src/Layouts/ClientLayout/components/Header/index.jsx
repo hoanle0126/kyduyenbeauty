@@ -42,6 +42,7 @@ const ClientHeader = () => {
           sm: "custom.card",
           xs: "none",
         },
+        width: "100%",
       }}
     >
       <Stack
