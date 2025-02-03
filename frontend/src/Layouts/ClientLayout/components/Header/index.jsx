@@ -157,9 +157,6 @@ const ClientHeader = () => {
                 <Icon icon="solar:cart-5-broken" width={28} height={28} />
               </Badge>
             </IconButton>
-            <IconButton onClick={() => setMenu(true)}>
-              <Icon icon="solar:hamburger-menu-linear" width={32} height={32} />
-            </IconButton>
           </Stack>
         ) : (
           <Stack
