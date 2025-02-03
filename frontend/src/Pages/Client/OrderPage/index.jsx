@@ -102,6 +102,27 @@ export const sumPrice = (products) => {
   );
 };
 
+export const sumMass = (products) => {
+  return products?.reduce(
+    (total, item) => total + item.mass * item.quantity_cart,
+    0
+  );
+};
+
+export const getShippingPrice = (products) => {
+  const totalMass = products?.reduce(
+    (total, item) => total + item.mass * item.quantity_cart,
+    0
+  );
+  if (totalMass < 6) {
+    return formatCurrency(10.5);
+  } else if (totalMass > 9) {
+    return formatCurrency(25.5);
+  } else {
+    return formatCurrency(15.5);
+  }
+};
+
 const CheckoutPage = () => {
   const { search } = window.location; // Lấy query string hiện tại
   const searchParams = new URLSearchParams(search);
@@ -306,7 +327,7 @@ const CheckoutPage = () => {
                   </Typography>
                   <div className="flex-1"></div>
                   <Typography variant="subtitle2" color="text.primary">
-                    Free
+                    {getShippingPrice(cart?.products)}
                   </Typography>
                 </Stack>
                 <Divider
@@ -377,9 +398,7 @@ const CheckoutPage = () => {
           </Stack>
         </Grid2>
       </Grid2>
-      <SuccessModal
-        open={successModal}
-      />
+      <SuccessModal open={successModal} />
     </Stack>
   );
 };

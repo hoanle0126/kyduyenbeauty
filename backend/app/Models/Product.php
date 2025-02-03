@@ -21,6 +21,7 @@ class Product extends Model
         "price",
         "price_total",
         "quantity",
+        "mass",
         "remain",
         "ingredient",
         "images"

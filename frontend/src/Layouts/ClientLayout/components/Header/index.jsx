@@ -23,6 +23,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useStateContext } from "../../../../Context";
 import MainLogo from "../../../../assets/mainLogo";
 import HeaderDrawer from "./components/HeaderDrawer";
+import TitleImage from "../../../../assets/Title";
 
 const ClientHeader = () => {
   const navigate = useNavigate();
@@ -37,11 +38,10 @@ const ClientHeader = () => {
     <Box
       component="header"
       sx={{
-        position: "sticky",
-        top: 0,
-        left: 0,
-        zIndex: 1000,
-        boxShadow: "custom.card",
+        boxShadow: {
+          sm: "custom.card",
+          xs: "none",
+        },
       }}
     >
       <Stack
@@ -54,13 +54,18 @@ const ClientHeader = () => {
       >
         <Stack direction="row" alignItems="center" gap="8px">
           <Icon
-            icon="eva:email-outline"
+            icon="ic:baseline-facebook"
             width={20}
             height={20}
             color={MuiTheme().palette.background.neutral}
           />
-          <Typography variant="subtitle2" color="background.neutral">
-            Caokyduyenkrshop@gmail.com
+          <Typography
+            component="a"
+            href="https://www.facebook.com/caokyduyenkrshop"
+            variant="subtitle2"
+            color="background.neutral"
+          >
+            Dallas, Texas United State
           </Typography>
         </Stack>
         <Stack direction="row" alignItems="center" gap="8px">
@@ -78,12 +83,12 @@ const ClientHeader = () => {
       <Box
         sx={{
           backgroundColor: "background.paper",
-          height: "66px",
+          height: "120px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           paddingX: {
-            xs: "30px",
+            xs: "0px",
             sm: "60px",
             md: "90px",
             lg: "160px",
@@ -92,10 +97,7 @@ const ClientHeader = () => {
       >
         {upMd ? (
           <>
-            <img
-              src={MainLogo}
-              className="w-[40px] h-[40px] rounded-full"
-            ></img>
+            <img src={TitleImage} className="h-[100px]"></img>
             <Stack
               direction="row"
               sx={{
@@ -104,7 +106,7 @@ const ClientHeader = () => {
                 left: "50%",
                 gap: "28px",
                 a: {
-                  fontStyle: MuiTheme().typography.body1,
+                  fontStyle: MuiTheme().typography.h6,
                 },
               }}
             >
@@ -121,37 +123,79 @@ const ClientHeader = () => {
             </Stack>
           </>
         ) : (
-          <IconButton onClick={() => setMenu(true)}>
-            <Icon icon="solar:hamburger-menu-linear" width={32} height={32} />
-          </IconButton>
+          // <IconButton onClick={() => setMenu(true)}>
+          //   <Icon icon="solar:hamburger-menu-linear" width={32} height={32} />
+          // </IconButton>
+          <img src={TitleImage} className="h-[100px]"></img>
         )}
-        <Stack
-          direction="row"
-          sx={{
-            gap: "12px",
-          }}
-        >
-          <IconButton onClick={() => setOpenSearch(true)}>
-            <Icon icon="eva:search-fill" width={24} height={24} />
-          </IconButton>
-          <IconButton
-            onClick={() => navigate("/checkout")}
+        {upMd ? (
+          <Stack
+            direction="row"
             sx={{
-              marginRight: "12px",
+              gap: "12px",
+              height: "100%",
+              alignItems: "center",
             }}
           >
-            <Badge
-              badgeContent={
-                <Typography variant="captiontext">
-                  {cart?.products?.length}
-                </Typography>
-              }
-              color="error"
+            <IconButton onClick={() => setOpenSearch(true)}>
+              <Icon icon="eva:search-fill" width={28} height={28} />
+            </IconButton>
+            <IconButton
+              onClick={() => navigate("/checkout")}
+              sx={{
+                marginRight: "12px",
+              }}
             >
-              <Icon icon="solar:cart-5-broken" width={24} height={24} />
-            </Badge>
-          </IconButton>
-        </Stack>
+              <Badge
+                badgeContent={
+                  <Typography variant="captiontext">
+                    {cart?.products?.length}
+                  </Typography>
+                }
+                color="error"
+              >
+                <Icon icon="solar:cart-5-broken" width={28} height={28} />
+              </Badge>
+            </IconButton>
+            <IconButton onClick={() => setMenu(true)}>
+              <Icon icon="solar:hamburger-menu-linear" width={32} height={32} />
+            </IconButton>
+          </Stack>
+        ) : (
+          <Stack
+            direction="row"
+            sx={{
+              gap: "12px",
+              height: "100%",
+              alignItems: "start",
+              paddingTop: "20px",
+            }}
+          >
+            <IconButton onClick={() => setOpenSearch(true)}>
+              <Icon icon="eva:search-fill" width={28} height={28} />
+            </IconButton>
+            <IconButton
+              onClick={() => navigate("/checkout")}
+              sx={{
+                marginRight: "12px",
+              }}
+            >
+              <Badge
+                badgeContent={
+                  <Typography variant="captiontext">
+                    {cart?.products?.length}
+                  </Typography>
+                }
+                color="error"
+              >
+                <Icon icon="solar:cart-5-broken" width={28} height={28} />
+              </Badge>
+            </IconButton>
+            <IconButton onClick={() => setMenu(true)}>
+              <Icon icon="solar:hamburger-menu-linear" width={32} height={32} />
+            </IconButton>
+          </Stack>
+        )}
         <SearchModal
           open={openSearch}
           handleClose={() => setOpenSearch(false)}

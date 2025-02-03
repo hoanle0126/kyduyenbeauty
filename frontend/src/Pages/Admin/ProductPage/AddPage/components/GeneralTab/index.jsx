@@ -102,6 +102,26 @@ const GeneralTab = ({ product, setProduct }) => {
             </Typography>
           </Stack>
           <Stack gap={"8px"}>
+            <Typography variant="subtitle2">Mass (lbs)</Typography>
+            <OutlinedInput
+              size="small"
+              color="custom"
+              fullWidth
+              placeholder="Enter product name..."
+              value={product?.mass}
+              onChange={(e) =>
+                setProduct({
+                  ...product,
+                  mass: e.target.value,
+                })
+              }
+              type="number"
+            />
+            <Typography variant="captiontext" color={"text.disabled"}>
+              A product name is required and recommended to be unique.
+            </Typography>
+          </Stack>
+          <Stack gap={"8px"}>
             <Typography variant="subtitle2">Description</Typography>
             <EditorTiptap
               content={product.description}

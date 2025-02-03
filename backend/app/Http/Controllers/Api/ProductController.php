@@ -62,6 +62,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'images' => $request->images,
             'quantity' => $request->quantity,
+            'mass' => $request->mass,
             'remain' => $request->remain,
         ]);
 
@@ -101,6 +102,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'images' => $request->images,
             'quantity' => $request->quantity,
+            'mass' => $request->mass,
             'remain' => $request->remain,
         ]);
     }

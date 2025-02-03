@@ -1,10 +1,8 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 
 const ListNavItems = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
 
   return [
     {

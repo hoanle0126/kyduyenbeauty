@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string("thumbnail");
             $table->longText("description")->nullable();
             $table->longText("detail")->nullable();
+            $table->longText(column: "mass")->default(0);
             $table->json("ingredient")->nullable();
             $table->float("price");
             $table->float("price_total");

@@ -64,7 +64,24 @@ const LandingPage = () => {
             position: "relative",
           }}
         >
-          <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+          {upSm ? (
+            <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+          ) : (
+            <Stack
+              sx={{
+                paddingX: "30px",
+                gap: "12px",
+              }}
+            >
+              <Typography variant="h2" color="primary.main">
+                Authentic Korean Quality at Fair Prices
+              </Typography>
+              <Typography variant="h5" color="primary.main">
+                Specializing in providing genuine Korean products with superior
+                quality, reasonable price commitment and dedicated service.
+              </Typography>
+            </Stack>
+          )}
         </Box>
         <CategorySection />
         <ProductSection />
@@ -110,7 +127,8 @@ const LandingPage = () => {
             {
               icon: "bx:car",
               title: "Shipping",
-              description: "4-6 Days",
+              description:
+                "Free shipping with $150 purchase (on selected items) in the U.S. only",
             },
             {
               icon: "solar:verified-check-bold",
@@ -153,7 +171,6 @@ const LandingPage = () => {
                   <Typography
                     variant="body2"
                     sx={{
-                      textTransform: "capitalize",
                       color: "text.secondary",
                     }}
                   >
