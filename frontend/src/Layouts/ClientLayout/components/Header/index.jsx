@@ -186,12 +186,12 @@ const ClientHeader = () => {
                 }
                 color="error"
               >
-                <Icon icon="solar:cart-5-broken" width={28} height={28} />
+                <Icon icon="solar:cart-5-broken" width={24} height={24} />
               </Badge>
             </IconButton>
-            {/* <IconButton onClick={() => setMenu(true)}>
-              <Icon icon="solar:hamburger-menu-linear" width={28} height={28} />
-            </IconButton> */}
+            <IconButton onClick={() => setMenu(true)}>
+              <Icon icon="solar:hamburger-menu-linear" width={24} height={24} />
+            </IconButton>
           </Stack>
         )}
         <SearchModal
