@@ -167,6 +167,7 @@ const ClientHeader = () => {
               height: "100%",
               alignItems: "start",
               paddingTop: "20px",
+              paddingRight: "10px",
             }}
           >
             {/* <IconButton onClick={() => setOpenSearch(true)}>
