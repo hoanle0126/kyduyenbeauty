@@ -57,6 +57,10 @@ const LandingPage = () => {
             sm: "60px",
             xs: "60px",
           },
+          backgroundColor:{
+            xs:"background.default",
+            sm:"background.paper"
+          }
         }}
       >
         <Box
@@ -72,7 +76,8 @@ const LandingPage = () => {
                 paddingX: "30px",
                 gap: "12px",
                 ".landing__title": {
-                  color: "primary.main",
+                  color: "background.paper",
+                  textShadow:"3px 3px 3px #141617"
                 },
               }}
             >
@@ -80,8 +85,10 @@ const LandingPage = () => {
                 Authentic Korean Quality at Fair Prices
               </Typography>
               <Typography className="landing__title" variant="h5">
-                Specializing in providing genuine Korean products with superior
-                quality, reasonable price commitment and dedicated service.
+                We specialize in offering authentic Korean products of
+                exceptional quality, ensuring a commitment to reasonable pricing
+                and providing dedicated, customer-focused service to enhance
+                your shopping experience.
               </Typography>
             </Stack>
           )}
@@ -93,7 +100,6 @@ const LandingPage = () => {
           container
           sx={{
             bottom: "-40px",
-            backgroundColor: "background.paper",
             width: "100%",
             borderTop: "1px solid " + MuiTheme().palette.primary.lighter,
             borderBottom: "1px solid " + MuiTheme().palette.primary.lighter,
