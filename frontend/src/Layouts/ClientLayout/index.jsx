@@ -37,6 +37,7 @@ const ClientLayout = () => {
             height: "100vh",
             alignItems: "center",
             justifyContent: "center",
+            
           }}
         >
           <CircularProgress />

@@ -57,10 +57,6 @@ const LandingPage = () => {
             sm: "60px",
             xs: "60px",
           },
-          backgroundColor:{
-            xs:"background.default",
-            sm:"background.paper"
-          }
         }}
       >
         <Box
@@ -76,8 +72,8 @@ const LandingPage = () => {
                 paddingX: "30px",
                 gap: "12px",
                 ".landing__title": {
-                  color: "background.paper",
-                  textShadow:"3px 3px 3px #141617"
+                  color: "primary.main",
+                  textShadow: "3px 3px 3px " + MuiTheme().palette.primary.dark,
                 },
               }}
             >
@@ -100,6 +96,7 @@ const LandingPage = () => {
           container
           sx={{
             bottom: "-40px",
+            backgroundColor: "background.paper",
             width: "100%",
             borderTop: "1px solid " + MuiTheme().palette.primary.lighter,
             borderBottom: "1px solid " + MuiTheme().palette.primary.lighter,

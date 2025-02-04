@@ -83,10 +83,7 @@ const ClientHeader = () => {
       </Stack>
       <Box
         sx={{
-          backgroundColor:{
-            xs:"background.default",
-            sm:"background.paper"
-          },
+          backgroundColor: "background.paper",
           height: {
             xs: "140px",
             sm: "120px",
