@@ -83,7 +83,6 @@ const ClientHeader = () => {
       </Stack>
       <Box
         sx={{
-          backgroundColor: "background.paper",
           height: {
             xs: "140px",
             sm: "120px",
@@ -130,7 +129,11 @@ const ClientHeader = () => {
           // <IconButton onClick={() => setMenu(true)}>
           //   <Icon icon="solar:hamburger-menu-linear" width={32} height={32} />
           // </IconButton>
-          <img src={TitleImage} className="h-[120px]"></img>
+          <img
+            src={TitleImage}
+            onClick={() => navigate("/")}
+            className="h-[120px]"
+          ></img>
         )}
         {upMd ? (
           <Stack

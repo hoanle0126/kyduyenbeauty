@@ -70,10 +70,13 @@ const LandingPage = () => {
             <Stack
               sx={{
                 paddingX: "30px",
+                paddingY:"40px",
                 gap: "12px",
+                backgroundImage:
+                  "linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(20, 22, 23, 0.4) 100%), url(https://greencleandfw.wpengine.com/wp-content/uploads/2024/01/flipped-homepage-header.png)",
                 ".landing__title": {
-                  color: "primary.main",
-                  textShadow: "3px 3px 3px " + MuiTheme().palette.primary.dark,
+                  color: "background.paper",
+                  textShadow: "3px 3px 3px #141617",
                 },
               }}
             >
