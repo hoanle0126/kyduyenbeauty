@@ -71,12 +71,15 @@ const LandingPage = () => {
               sx={{
                 paddingX: "30px",
                 gap: "12px",
+                ".landing__title": {
+                  color: "primary.main",
+                },
               }}
             >
-              <Typography variant="h2" color="primary.main">
+              <Typography className="landing__title" variant="h2">
                 Authentic Korean Quality at Fair Prices
               </Typography>
-              <Typography variant="h5" color="primary.main">
+              <Typography className="landing__title" variant="h5">
                 Specializing in providing genuine Korean products with superior
                 quality, reasonable price commitment and dedicated service.
               </Typography>

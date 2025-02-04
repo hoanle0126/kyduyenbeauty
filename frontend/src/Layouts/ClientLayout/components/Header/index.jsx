@@ -84,12 +84,15 @@ const ClientHeader = () => {
       <Box
         sx={{
           backgroundColor: "background.paper",
-          height: "120px",
+          height: {
+            xs: "140px",
+            sm: "120px",
+          },
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           paddingX: {
-            xs: "0px",
+            xs: "30px",
             sm: "60px",
             md: "90px",
             lg: "160px",
@@ -127,7 +130,7 @@ const ClientHeader = () => {
           // <IconButton onClick={() => setMenu(true)}>
           //   <Icon icon="solar:hamburger-menu-linear" width={32} height={32} />
           // </IconButton>
-          <img src={TitleImage} className="h-[100px]"></img>
+          <img src={TitleImage} className="h-[120px]"></img>
         )}
         {upMd ? (
           <Stack
@@ -161,37 +164,35 @@ const ClientHeader = () => {
           </Stack>
         ) : (
           <Stack
-            direction="row"
             sx={{
-              gap: "12px",
               height: "100%",
               alignItems: "start",
+              justifyContent: "start",
+              gap: "8px",
               paddingTop: "20px",
             }}
           >
-            {/* <IconButton onClick={() => setOpenSearch(true)}>
-              <Icon icon="eva:search-fill" width={28} height={28} />
-            </IconButton> */}
-            <IconButton
-              onClick={() => navigate("/checkout")}
-              sx={{
-                marginRight: "12px",
-              }}
+            <Badge
+              badgeContent={
+                <Typography variant="captiontext">
+                  {cart?.products?.length}
+                </Typography>
+              }
+              color="error"
             >
-              <Badge
-                badgeContent={
-                  <Typography variant="captiontext">
-                    {cart?.products?.length}
-                  </Typography>
-                }
-                color="error"
-              >
-                <Icon icon="solar:cart-5-broken" width={24} height={24} />
-              </Badge>
-            </IconButton>
-            <IconButton onClick={() => setMenu(true)}>
-              <Icon icon="solar:hamburger-menu-linear" width={24} height={24} />
-            </IconButton>
+              <Icon
+                onClick={() => navigate("/checkout")}
+                icon="solar:cart-5-broken"
+                width={24}
+                height={24}
+              />
+            </Badge>
+            <Icon
+              onClick={() => setMenu(true)}
+              icon="solar:hamburger-menu-linear"
+              width={24}
+              height={24}
+            />
           </Stack>
         )}
         <SearchModal
