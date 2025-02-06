@@ -1,5 +1,5 @@
 import React from "react";
-import Title from "./title.png";
+import Title from "./title(1).png";
 
 const TitleImage = Title;
 

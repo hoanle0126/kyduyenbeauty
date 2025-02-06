@@ -115,7 +115,7 @@ export const getShippingPrice = (products) => {
     0
   );
   if (totalMass < 6) {
-    return formatCurrency(10.5);
+    return formatCurrency(7.5);
   } else if (totalMass > 9) {
     return formatCurrency(25.5);
   } else {

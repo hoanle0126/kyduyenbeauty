@@ -53,20 +53,21 @@ const ClientHeader = () => {
           backgroundColor: "text.primary",
         }}
       >
-        <Stack direction="row" alignItems="center" gap="8px">
+        <Stack
+          component="a"
+          href="https://www.facebook.com/caokyduyenkrshop"
+          direction="row"
+          alignItems="center"
+          gap="8px"
+        >
           <Icon
             icon="ic:baseline-facebook"
             width={20}
             height={20}
             color={MuiTheme().palette.background.neutral}
           />
-          <Typography
-            component="a"
-            href="https://www.facebook.com/caokyduyenkrshop"
-            variant="subtitle2"
-            color="background.neutral"
-          >
-            Dallas, Texas United State
+          <Typography variant="subtitle2" color="background.neutral">
+            Cao Kỳ Duyên Beauty
           </Typography>
         </Stack>
         <Stack direction="row" alignItems="center" gap="8px">
@@ -83,10 +84,7 @@ const ClientHeader = () => {
       </Stack>
       <Box
         sx={{
-          height: {
-            xs: "140px",
-            sm: "120px",
-          },
+          height: "120px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -132,7 +130,7 @@ const ClientHeader = () => {
           <img
             src={TitleImage}
             onClick={() => navigate("/")}
-            className="h-[120px]"
+            className="h-[100px]"
           ></img>
         )}
         {upMd ? (
