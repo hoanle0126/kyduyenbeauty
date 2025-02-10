@@ -130,7 +130,7 @@ const ClientHeader = () => {
           <img
             src={TitleImage}
             onClick={() => navigate("/")}
-            className="h-[100px]"
+            className="h-[80px]"
           ></img>
         )}
         {upMd ? (
@@ -184,15 +184,15 @@ const ClientHeader = () => {
               <Icon
                 onClick={() => navigate("/checkout")}
                 icon="solar:cart-5-broken"
-                width={24}
-                height={24}
+                width={20}
+                height={20}
               />
             </Badge>
             <Icon
               onClick={() => setMenu(true)}
               icon="solar:hamburger-menu-linear"
-              width={24}
-              height={24}
+              width={20}
+              height={20}
             />
           </Stack>
         )}
