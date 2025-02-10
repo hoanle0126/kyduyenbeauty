@@ -1,4 +1,4 @@
-export const primaryFont = "Open Sans";
+export const primaryFont = "Faustina";
 export const secondaryFont = "Faustina";
 
 export const typography = {
@@ -18,10 +18,11 @@ export const typography = {
     fontFamily: secondaryFont,
   },
   h3: {
-    fontSize: "30px",
+    fontSize: "28px",
     lineHeight: "48px",
     fontWeight: "700",
     letterSpacing: 0,
+    fontFamily: secondaryFont,
   },
   h4: {
     fontSize: "22px",

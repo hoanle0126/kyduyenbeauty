@@ -68,10 +68,10 @@ const LandingPage = () => {
             <EmblaCarousel slides={SLIDES} options={OPTIONS} />
           ) : (
             <>
-              <Typography variant="body1" sx={{
+              <Typography variant="subtitle2" sx={{
                 paddingX:"30px",
                 textAlign:"center",
-                color:"text.secondary"
+                fontWeight:700
               }}>
                 Free shipping on orders over $149 | Use code at checkout:
                 FREESHIP
@@ -84,15 +84,15 @@ const LandingPage = () => {
                   backgroundImage:
                     "linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(20, 22, 23, 0.4) 100%), url(https://th.bing.com/th/id/R.58d952d0d80dffa2f7df595664b01e3c?rik=tFrwN4lgCs%2fikQ&pid=ImgRaw&r=0)",
                   ".landing__title": {
-                    color: "background.paper",
-                    textShadow: "3px 3px 3px #141617",
+                    color: "text.primary",
+                    // textShadow: "3px 3px 3px #141617",
                   },
                 }}
               >
-                <Typography className="landing__title" variant="h2">
+                <Typography className="landing__title" variant="h3">
                   Authentic Korean Quality at Fair Prices
                 </Typography>
-                <Typography className="landing__title" variant="h6">
+                <Typography className="landing__title" variant="subtitle1">
                   We specialize in offering authentic Korean products of
                   exceptional quality, ensuring a commitment to reasonable
                   pricing and providing dedicated, customer-focused service to
