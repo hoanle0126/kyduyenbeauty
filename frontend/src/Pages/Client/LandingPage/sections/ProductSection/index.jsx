@@ -63,7 +63,7 @@ const ProductSection = () => {
           }}
         >
           <Typography variant="h4" textTransform="uppercase">
-            Newest Products
+            Our Products
           </Typography>
         </Box>
       </center>
