@@ -15,7 +15,7 @@ import { useStateContext } from "../../../../../Context";
 
 const PaymentStep = () => {
   const { cart, setCart } = useStateContext();
-  
+
   return (
     <Stack gap={"32px"}>
       <Box
@@ -75,7 +75,7 @@ const PaymentStep = () => {
                   color={MuiTheme().palette.text.primary}
                 />
               </Box>
-              {cart?.payment?.title === it.title && it.title !== "Cash" && (
+              {it.title !== "Cash" && (
                 <Stack
                   sx={{
                     padding: "20px",
@@ -83,6 +83,7 @@ const PaymentStep = () => {
                     borderColor: "divider",
                     borderRadius: "12px",
                     gap: "20px",
+                    display: cart?.payment?.title !== it.title && "none",
                   }}
                 >
                   <Stack direction="row" gap="20px" alignItems="center">
@@ -95,61 +96,7 @@ const PaymentStep = () => {
                     <Typography variant="h6">Card</Typography>
                   </Stack>
                   <Stack gap="20px">
-                    <Stack gap="8px">
-                      <Typography variant="subtitle2">Card Number</Typography>
-                      <TextField
-                        placeholder="1234 1234 1234"
-                        color="common"
-                        size="small"
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment>
-                              <Stack direction="row" gap="20px">
-                                <Icon
-                                  icon="logos:visaelectron"
-                                  width="24"
-                                  height="24"
-                                />
-                                <Icon
-                                  icon="logos:mastercard"
-                                  width="24"
-                                  height="24"
-                                />
-                              </Stack>
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                    </Stack>
-                    <Stack gap="8px">
-                      <Typography variant="subtitle2">
-                        Expiration Date
-                      </Typography>
-                      <TextField
-                        placeholder="MM/YY"
-                        color="common"
-                        size="small"
-                      />
-                    </Stack>
-                    <Stack gap="8px">
-                      <Typography variant="subtitle2">Security Code</Typography>
-                      <TextField
-                        placeholder="CVC"
-                        color="common"
-                        size="small"
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment>
-                              <Icon
-                                icon="solar:card-2-bold-duotone"
-                                width="24"
-                                height="24"
-                              />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                    </Stack>
+                    <div id="card-container"></div>
                   </Stack>
                 </Stack>
               )}
