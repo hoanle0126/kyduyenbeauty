@@ -1,7 +1,4 @@
-import React from "react";
-import Landing1 from "./Landing1(2).png";
-import Landing1Mobile from "./Landing1Mobile(1).png";
+export const Landing1Image =
+  "https://res.cloudinary.com/dbszvxbvv/image/upload/v1742443111/Landing1_2_az7ybf.png";
 
-export const Landing1Image = Landing1;
-
-export const Landing1MobileImage = Landing1Mobile;
+export const Landing1MobileImage = "Landing1Mobile";

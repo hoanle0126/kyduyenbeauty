@@ -1,6 +1,4 @@
-import React from "react";
-import Title from "./title(1).png";
-
-const TitleImage = Title;
+const TitleImage =
+  "https://res.cloudinary.com/dbszvxbvv/image/upload/v1742443156/title_1_sqcqbr.png";
 
 export default TitleImage;

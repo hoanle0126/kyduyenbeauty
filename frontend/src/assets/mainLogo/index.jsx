@@ -1,6 +1,4 @@
-import React from "react";
-import MainLogoImage from "./logo.png";
-
-const MainLogo = MainLogoImage;
+const MainLogo =
+  "https://res.cloudinary.com/dbszvxbvv/image/upload/v1742443043/logo_ipnj4j.png";
 
 export default MainLogo;
