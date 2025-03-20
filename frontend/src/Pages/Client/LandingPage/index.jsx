@@ -28,13 +28,13 @@ import HeaderHelmet from "../../../Components/Header";
 const OPTIONS = { loop: true };
 const SLIDES = [
   {
-    href: Landing1Image,
+    href: "https://res.cloudinary.com/dbszvxbvv/image/upload/v1742443111/Landing1_2_az7ybf.png",
   },
   {
-    href: Landing2Image,
+    href: "https://res.cloudinary.com/dbszvxbvv/image/upload/v1742443134/Landing3_clmmvx.png",
   },
   {
-    href: Landing3Image,
+    href: "https://res.cloudinary.com/dbszvxbvv/image/upload/v1742443124/Landing2_o1k5qo.png",
   },
 ];
 
@@ -67,11 +67,14 @@ const LandingPage = () => {
             <EmblaCarousel slides={SLIDES} options={OPTIONS} />
           ) : (
             <>
-              <Typography variant="subtitle2" sx={{
-                paddingX:"30px",
-                textAlign:"center",
-                fontWeight:700
-              }}>
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  paddingX: "30px",
+                  textAlign: "center",
+                  fontWeight: 700,
+                }}
+              >
                 Free shipping on orders over $149 | Use code at checkout:
                 FREESHIP
               </Typography>
