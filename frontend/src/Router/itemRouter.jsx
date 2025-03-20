@@ -19,6 +19,7 @@ import CategoriesAddPage from "../Pages/Admin/CategoriesPage/AddPage";
 import CategoriesViewPage from "../Pages/Admin/CategoriesPage/ViewPage";
 import OrderPage from "../Pages/Admin/OrderPage";
 import OrderDetailPage from "../Pages/Admin/OrderDetailPage";
+import CheckoutTestPage from "../Pages/Checkout";
 
 const itemRouter = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const itemRouter = createBrowserRouter([
       {
         path: "/checkout",
         element: <CheckoutPage />,
+      },
+      {
+        path: "/checkout-test",
+        element: <CheckoutTestPage />,
       },
       {
         path: "/checkout-success",
