@@ -151,7 +151,7 @@ const ProductSection = () => {
         <Button
           color="common"
           endIcon={<Icon icon="eva:arrow-forward-fill" />}
-          onClick={() => console.log()}
+          onClick={() => navigate("/shop")}
         >
           View more
         </Button>

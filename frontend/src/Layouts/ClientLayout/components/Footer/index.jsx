@@ -1,11 +1,58 @@
 import { Icon } from "@iconify/react";
-import { Box, Button, OutlinedInput, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  OutlinedInput,
+  Slide,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import MainLogo from "../../../../assets/mainLogo";
+import { axiosClient } from "../../../../config/axiosClient";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const ClientFooter = () => {
   const categories = useSelector((store) => store.categories);
+  const [contact, setContact] = React.useState({
+    name: "",
+    subject: "",
+    email: "",
+    message: "",
+  });
+  const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleContact = async () => {
+    try {
+      setLoading(true);
+      axiosClient.post("/send-email", contact).then((data) => {
+        setLoading(false);
+        setContact({
+          name: "",
+          subject: "",
+          email: "",
+          message: "",
+        });
+        setOpen(true);
+      });
+    } catch (error) {
+      console.error("Payment failed", error);
+      setLoading(false);
+    }
+  };
 
   return (
     <Stack
@@ -112,19 +159,61 @@ const ClientFooter = () => {
       >
         <Typography variant="h4">Contact Us</Typography>
         <Stack gap="12px" width={"100%"}>
-          <OutlinedInput size="small" fullWidth placeholder="Email" />
-          <OutlinedInput
-            size="small"
-            fullWidth
-            multiline
-            minRows={4}
-            placeholder="Content"
+          <TextField
+            label="Name"
+            color="common"
+            value={contact.name}
+            onChange={(e) => setContact({ ...contact, name: e.target.value })}
           />
-          <Button variant="contained" color="common">
+          <TextField
+            label="Email"
+            color="common"
+            type="email"
+            value={contact.email}
+            onChange={(e) => setContact({ ...contact, email: e.target.value })}
+          />
+          <TextField
+            label="Subject"
+            color="common"
+            value={contact.subject}
+            onChange={(e) =>
+              setContact({ ...contact, subject: e.target.value })
+            }
+          />
+          <TextField
+            label="Enter your message here"
+            color="common"
+            multiline
+            minRows={3}
+            value={contact.message}
+            onChange={(e) =>
+              setContact({ ...contact, message: e.target.value })
+            }
+          />
+          <Button
+            variant="contained"
+            color="common"
+            onClick={handleContact}
+            loading={loading}
+          >
             Send
           </Button>
         </Stack>
       </Stack>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>Sent Successfully!</DialogTitle>
+        <DialogActions>
+          <Button color="success" onClick={handleClose}>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Stack>
   );
 };

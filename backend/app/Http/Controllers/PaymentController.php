@@ -14,7 +14,7 @@ class PaymentController extends Controller
     {
         // Khởi tạo SquareClient với access token
         $client = new SquareClient([
-            'accessToken' => 'EAAAl9wRsIFvYF7nmKFbnKitWn9NEJd9FPqtjhN9BzhZcTOTe979nEnv7vvTGaRz',
+            'accessToken' => env('SQUARE_ACCESS_TOKEN'),
             'environment' => 'production',
         ]);
 
@@ -23,22 +23,10 @@ class PaymentController extends Controller
         $currency = strtoupper($request->input('currency', 'USD')); // Mặc định USD
         $token = $request->input('token'); // Token từ frontend
 
-        // if($amount){
-        //     return response()->json([
-        //         "amount"=>$amount
-        //     ]);
-        // }
-
         // Tạo đối tượng Money
         $money = new Money();
         $money->setAmount($amount);
         $money->setCurrency($currency);
-
-        // if ($money) {
-        //     return response()->json([
-        //         "amount" => $money
-        //     ]);
-        // }
 
         // Tạo yêu cầu thanh toán
         $paymentRequest = new CreatePaymentRequest(
@@ -46,6 +34,7 @@ class PaymentController extends Controller
             uniqid()     // ID duy nhất
         );
         $paymentRequest->setAmountMoney($money);
+        $paymentRequest->setAutocomplete(true);
 
         try {
             // Gửi yêu cầu thanh toán đến Square

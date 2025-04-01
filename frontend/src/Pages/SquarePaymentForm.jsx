@@ -14,8 +14,8 @@ const SquarePayment = () => {
 
       try {
         const paymentsInstance = window.Square.payments(
-          "sandbox-sq0idb-3RhpLKhT9zjDjNkHg5y1_Q",
-          "LTSQNKR5B7FT9"
+          "sq0idp-o6Soze5DETR4XEANHX94vw",
+          "LZM6G8GHNN14P"
         );
 
         setPayments(paymentsInstance);

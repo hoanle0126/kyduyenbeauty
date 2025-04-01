@@ -33,9 +33,9 @@ const PaymentStep = () => {
         <Stack marginTop={"24px"} gap={"16px"}>
           {[
             {
-              title: "Pay with Paypal",
+              title: "Pay with Card",
               description:
-                "You will be redirected to PayPal website to complete your purchase securely.",
+                "You will pay directly on the web",
               icon: "logos:paypal",
             },
             {

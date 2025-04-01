@@ -144,8 +144,8 @@ const CheckoutPage = () => {
 
       try {
         const paymentsInstance = window.Square.payments(
-          "sq0idp-o6Soze5DETR4XEANHX94vw",
-          "LZM6G8GHNN14P"
+          import.meta.env.VITE_SQUARE_APPLICATION_ID,
+          import.meta.env.VITE_SQUARE_LOCATION_ID
         );
 
         setPayments(paymentsInstance);
@@ -179,7 +179,6 @@ const CheckoutPage = () => {
           paymentData,
           {
             headers: {
-              Authorization: `Bearer sandbox-sq0idb-3RhpLKhT9zjDjNkHg5y1_Q`, // Thêm Access Token
               "Content-Type": "application/json",
             },
           }
@@ -428,10 +427,10 @@ const CheckoutPage = () => {
                 size="large"
                 fullWidth
                 onClick={() => {
-                  // console.log(cart);
+                  console.log(cart);
                   dispatch(addNewOrder(cart));
-                  cart?.payment?.title === "Pay with Paypal" &&
-                    handlePayment(sumPrice(cart.products));
+                  cart?.payment?.title === "Pay with Card" &&
+                    handlePayment(100);
                   !orderState.loading &&
                     setCart({
                       products: [],

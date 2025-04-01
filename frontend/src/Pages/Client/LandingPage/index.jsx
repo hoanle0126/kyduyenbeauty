@@ -75,7 +75,7 @@ const LandingPage = () => {
                   fontWeight: 700,
                 }}
               >
-                Free shipping on orders over $149 | Use code at checkout:
+                Free shipping on orders over $149 purchase | Use code at checkout:
                 FREESHIP
               </Typography>
               <Stack
